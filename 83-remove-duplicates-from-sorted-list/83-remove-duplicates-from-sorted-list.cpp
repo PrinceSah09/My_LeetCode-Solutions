@@ -17,7 +17,10 @@ public:
         {
             if(pointer->val == pointer->next->val)
             {
-                pointer->next = pointer->next->next; //if the val of current node is equals to the val of next node then skip the node
+                ListNode*del = pointer->next;
+                pointer->next = pointer->next->next; 
+                //if the val of current node is equals to the val of next node then skip the node
+                delete(del);
             }
             else
             {
