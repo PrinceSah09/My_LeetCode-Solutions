@@ -1,9 +1,9 @@
 /**
  *Definition for singly-linked list.
  *struct ListNode {
- *  int val;
- *  ListNode * next;
- *  ListNode(int x) : val(x), next(NULL) {}
+ *int val;
+ *ListNode * next;
+ *ListNode(int x) : val(x), next(NULL) {}
  *};
  */
 class Solution
@@ -12,7 +12,7 @@ class Solution
         bool hasCycle(ListNode *head)
         {
 
-            if (head == NULL || head -> next == NULL) return false;
+            if (head == NULL || head->next == NULL) return false;
 
             ListNode *slow = head;
             ListNode *fast = head;
@@ -20,7 +20,7 @@ class Solution
             while ((slow != NULL) && (fast != NULL))
             {
                 fast = fast->next;
-                if (fast  != NULL)
+                if (fast != NULL)
                 {
                     fast = fast->next;
                 }
@@ -30,4 +30,4 @@ class Solution
             }
             return false;
         }
-}; 
+};
