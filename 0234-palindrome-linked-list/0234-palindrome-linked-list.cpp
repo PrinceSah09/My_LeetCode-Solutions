@@ -44,10 +44,12 @@
 //         }
 //         return prev;
 //     }
+    
 //     bool isPalindrome(ListNode *head)
 //     {
 
 //         if (head->next == NULL) return true;
+//         if(head->val == head->next->val)return true;
 //         if(head->next->next == NULL)return false;
 //        	//Step 1:Find Middle
 //         ListNode *middle = getmid(head);
@@ -73,51 +75,112 @@
 //     }
 // };
 
+// class Solution
+// {
+//     public:
+//         ListNode* findMid(ListNode *head)
+//         {
+//             ListNode *slow = head, *fast = head;
+//             while (fast != NULL && fast->next != NULL)
+//             {
+//                 slow = slow->next;
+//                 fast = fast->next;
+//                 if (fast) fast = fast->next;
+//             }
+//             return slow;
+//         }
+//     ListNode* reverseList(ListNode *head)
+//     {
+//         ListNode *prev = NULL, *curr = head, *temp = NULL;
+//         while (curr != NULL)
+//         {
+//             temp = curr->next;
+//             curr->next = prev;
+//             prev = curr;
+//             curr = temp;
+//         }
+//         return prev;
+//     }
+    
+//     bool compareList(ListNode *head1, ListNode *head2)
+//     {
+//         while (head1 != NULL && head2 != NULL)
+//         {
+//             if (head1->val != head2->val) return false;
+//             head1 = head1->next;
+//             head2 = head2->next;
+//         }
+//         return true;
+//     }
+    
+    
+//     bool isPalindrome(ListNode *head)
+//     {
+//         if (head == NULL || head->next == NULL) return true;
+//         ListNode *h = head;
+//         ListNode *mid = findMid(h);
+//         ListNode *h2 = reverseList(mid);
+//         return compareList(head, h2);
+//     }
+// };
+
+
 class Solution
 {
-    public:
-        ListNode* findMid(ListNode *head)
+    private:
+        ListNode* getMid(ListNode *head)
         {
-            ListNode *slow = head, *fast = head;
+            ListNode *slow = head;
+            ListNode *fast = head->next;
             while (fast != NULL && fast->next != NULL)
             {
+                fast = fast->next->next;
                 slow = slow->next;
-                fast = fast->next;
-                if (fast) fast = fast->next;
             }
             return slow;
         }
-    ListNode* reverseList(ListNode *head)
+
+    ListNode* reverse(ListNode *head)
     {
-        ListNode *prev = NULL, *curr = head, *temp = NULL;
-        while (curr != NULL)
-        {
-            temp = curr->next;
-            curr->next = prev;
-            prev = curr;
-            curr = temp;
-        }
+        ListNode *curr = head;
+        ListNode *prev = NULL;
+        ListNode *next = NULL;
+
+            while (curr != NULL)
+            {
+                next = curr->next;
+                curr->next = prev;
+                prev = curr;
+                curr = next;
+            }
         return prev;
     }
-    
-    bool compareList(ListNode *head1, ListNode *head2)
-    {
-        while (head1 != NULL && head2 != NULL)
+    public:
+        bool isPalindrome(ListNode *head)
         {
-            if (head1->val != head2->val) return false;
-            head1 = head1->next;
-            head2 = head2->next;
+            if(head==NULL)return false;
+            if (head->next == NULL) return true;
+
+             // find middle 
+            ListNode *middle = getMid(head);
+
+             // reverse half after middle 
+            ListNode *temp = middle->next;
+            middle->next = reverse(temp);
+
+             // now compare both part 
+            ListNode *head1 = head;
+            ListNode *head2 = middle->next;
+            while (head2 != NULL)
+            {
+                if (head1->val != head2->val)
+                {
+                    return false;
+                }
+                head1 = head1->next;
+                head2 = head2->next;
+            } 
+            
+            return true;
         }
-        return true;
-    }
-    
-    
-    bool isPalindrome(ListNode *head)
-    {
-        if (head == NULL || head->next == NULL) return true;
-        ListNode *h = head;
-        ListNode *mid = findMid(h);
-        ListNode *h2 = reverseList(mid);
-        return compareList(head, h2);
-    }
 };
