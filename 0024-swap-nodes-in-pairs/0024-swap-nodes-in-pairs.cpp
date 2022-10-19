@@ -40,20 +40,20 @@ class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
         ListNode* curr=head;
-        ListNode* nex=NULL;
+        ListNode* next=NULL;
         ListNode* prev=NULL;
 
         int count=0;
         while(curr!=NULL && count<2){
-            nex=curr->next;
+            next=curr->next;
             curr->next=prev;
             prev=curr;
-            curr=nex;
+            curr=next;
             count++;
         }
 
-        if(nex!=NULL){
-            head->next=swapPairs(nex);
+        if(next!=NULL){
+            head->next=swapPairs(next);
         }
         return prev;
     }
