@@ -9,12 +9,14 @@ public:
             maximum = max(maximum, nums[i]);
         }
         
-        int gcd = 1;
-        for(int i=1; i<=minimum; i++)
-        {
-            if(minimum % i==0 && maximum%i ==0)
-                gcd = i;
-        }
-        return gcd;
+        // int gcd = 1;
+        // for(int i=1; i<=minimum; i++)
+        // {
+        //     if(minimum % i==0 && maximum%i ==0)
+        //         gcd = i;
+        // }
+         
+         
+        return __gcd(maximum,minimum);
     }
 };
