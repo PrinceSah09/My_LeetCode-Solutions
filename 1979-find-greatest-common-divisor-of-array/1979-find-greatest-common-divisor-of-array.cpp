@@ -15,7 +15,7 @@ public:
         //     if(minimum % i==0 && maximum%i ==0)
         //         gcd = i;
         // }
-         
+        // retun gcd;
          
         return __gcd(maximum,minimum);
     }
