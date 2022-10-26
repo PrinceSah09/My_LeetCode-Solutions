@@ -23,7 +23,7 @@
          {
              return head;
          }
-         ListNode *prev, *tail = NULL, *temp = NULL;
+         ListNode *prev = NULL, *tail = NULL, *temp = NULL;
          ListNode dummy(NULL);
          prev = &dummy;
          dummy.next = head;
@@ -44,5 +44,4 @@
      }
  };
 
-
-// ref  : https://www.youtube.com/watch?v=tHKp8UuOkm4
+	// ref  : https://www.youtube.com/watch?v=tHKp8UuOkm4
