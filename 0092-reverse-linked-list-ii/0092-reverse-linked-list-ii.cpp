@@ -2,21 +2,6 @@
  {
      public:
 
-         ListNode* reverse(ListNode *head)
-         {
-
-             ListNode *prev = NULL, *next = NULL, *current = head;
-             while (current != NULL)
-             {
-                 next = current->next;
-                 current->next = prev;
-                 prev = current;
-                 current = next;
-             }
-
-             return prev;
-         }
-
      ListNode* reverseBetween(ListNode *head, int left, int right)
      {
          if (head == NULL || left == right)
