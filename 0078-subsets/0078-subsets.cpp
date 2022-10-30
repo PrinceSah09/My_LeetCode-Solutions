@@ -13,9 +13,8 @@ public:
         //Exclude
         solve(nums,badka,chotka,index+1);
         
-        //Include
-        int cand = nums[index];
-        chotka.push_back(cand);
+        //Include 
+        chotka.push_back(nums[index]);
         solve(nums,badka,chotka, index+1);
         
     }
