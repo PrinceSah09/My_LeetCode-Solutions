@@ -1,36 +1,33 @@
 class Solution
 {
     public:
-        long long makeIntegerBeautiful(long long n, int target)
-        {
-            vector < long long > v;
-            long long N;
-            int sum = 0;
-            N = n;
-            while (N)
-            {
-                int dig = N % 10;
-                sum += dig;
-                v.push_back(dig);	/// creating digit array
-                N /= 10;
-            }
 
-            for (int i = 0; i < v.size(); i++)	/// as it is reverse of the actual number, so start from i = 0
+        long long digsum(long long n)
+        {
+            long long sum = 0;
+            while (n)
             {
-                if (sum <= target) break;
-                sum -= v[i];	/// this because we are making current digit 0
-                v[i] = 0;
-                if (i + 1 < v.size()) v[i + 1]++;	/// and next digit increase by 1
-                else v.push_back(1);	/// if current position is the last digit hence doing so
-                sum += 1;
+                sum += n % 10;
+                n /= 10;
             }
-            long long NUM = 0;
-            for (int i = v.size() - 1; i >= 0; i--)
-            {
-                NUM = NUM *10 + v[i];	/// converting array to number
-            }
-            return NUM - n;
+            return sum;
         }
+
+    long long makeIntegerBeautiful(long long n, int target)
+    {
+        if (digsum(n) <= target) return 0;
+        long long count = 10;
+        long long temp = n;
+
+        while (digsum(temp) > target)
+        {
+            long long mod = n % count;
+            temp = n + count - mod;
+
+            count *= 10;
+        }
+        return temp - n;
+    }
 };
 
 // class Solution
