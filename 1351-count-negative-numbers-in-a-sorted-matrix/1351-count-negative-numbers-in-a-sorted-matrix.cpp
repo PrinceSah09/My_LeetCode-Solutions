@@ -8,10 +8,8 @@ class Solution
             {
                 for (int j = 0; j < grid[i].size(); j++)
                 {
-                    if (grid[i][j] < 0)
-                    {
-                        count++;
-                    }
+                    if (grid[i][j] < 0) count++;
+                    
                 }
             }
             return count;
