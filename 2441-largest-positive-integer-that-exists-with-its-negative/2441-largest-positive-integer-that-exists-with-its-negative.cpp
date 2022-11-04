@@ -7,7 +7,7 @@ class Solution
             sort(nums.begin(), nums.end());
             for (int i = 0; i < nums.size(); i++)
             {
-                for (int j = 1; j < nums.size(); j++)
+                for (int j = i+1; j < nums.size(); j++)
                 {
                     if (nums[i] != 0 && nums[i] == -(nums[j]))
                     {
