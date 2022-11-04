@@ -9,10 +9,7 @@ class Solution
             {
                 for (int j = i+1; j < nums.size(); j++)
                 {
-                    if (nums[i] != 0 && nums[i] == -(nums[j]))
-                    {
-                        ans = max(ans, nums[j]);
-                    }
+                    if (nums[i] != 0 && nums[i] == -(nums[j]))  ans = max(ans, nums[j]); 
                 }
             }
             return ans;
