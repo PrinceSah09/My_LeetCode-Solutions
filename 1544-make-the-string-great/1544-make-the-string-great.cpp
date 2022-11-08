@@ -1,10 +1,7 @@
 class Solution {
 public:
-    string makeGood(string s) {
-        // Use stack to store the visited characters.
-        vector<char> v;
-        
-        // Iterate over 's'.
+    string makeGood(string s) { 
+        vector<char> v; 
         for (auto currChar : s) {
             // If the current character make a pair with the last character in the stack,
             // remove both of them. Otherwise, we add the current character to stack.
