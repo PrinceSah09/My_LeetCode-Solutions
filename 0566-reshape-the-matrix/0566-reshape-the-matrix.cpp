@@ -25,11 +25,11 @@
              {
                  for (int j = 0; j < col; j++)
                  {
-                    	// Till elements of cloumn exits we simply push row elements to the small vector (v) 
+                    	// Till elements of row exits we simply push row elements to the small vector (v) 
                      v.push_back(mat[i][j]);
                      count++;
 
-                    	//  
+                    	// if count(number of rows element) is equal to given c then we push small vector to the large vector(ans) and clear/empty small vector for further use ans also initialize count to zero (if we dont intit it with zero then we cannot track the number of row element of the origianl matrix (mat))
                      if (count == c)
                      {
                          count = 0;
@@ -38,7 +38,10 @@
                      }
                  }
              }
-
+            	// Finally return the updated matrix (ans)
              return ans;
          }
  };
+
+	// Tc : O(n)^2
+	// SC : O(n)^2 
