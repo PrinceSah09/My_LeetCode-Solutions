@@ -3,18 +3,24 @@ class Solution
     public:
         int mostWordsFound(vector<string> &sentences)
         {
-            int maxi = 0;
-            for (int j = 0; j < sentences.size(); j++)
+            int count = 0;
+            int ans = INT_MIN;
+            cout << ans << endl;
+
+            for (int i = 0; i < sentences.size(); i++)
             {
-                string cand = sentences[j];
-                int temp = 0;
-                for (int i = 0; i < cand.length(); i++)
+                for (int j = 0; j < sentences[i].size(); j++)
                 {
-                    if (cand[i] == ' ' && cand[i + 1] != ' ')
-                        temp++;
+                    if (sentences[i][j] == ' ')
+
+                    {
+                        count++;
+                    }
                 }
-                maxi = max(maxi, temp);
+                ans = max(count + 1, ans);
+
+                count = 0;
             }
-            return maxi + 1;
+            return ans;
         }
 };
