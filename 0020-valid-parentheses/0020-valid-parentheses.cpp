@@ -1,52 +1,46 @@
-#include <stack>
-
-class Solution
-{
-    public:
-        bool isValid(string s)
-        {
-            stack<char> st;
-            if (s.length() % 2 != 0)
-            {
-                return false;
+class Solution {
+public:
+    bool isValid(string s) {
+        stack<char> st;
+        string x = s;
+        for(int i=0;i<x.length();i++){
+            if(x[i]=='{' || x[i]=='(' || x[i]=='['){
+                st.push(x[i]);
             }
-
-            for (int i = 0; i < s.length(); i++)
-            {
-                char x = s[i];
-
-                if (x == '(' || x == '[' || x == '{')
-                {
-                    st.push(x);
+                if(st.empty()){
+                    return false;
                 }
-                else
-                {
-                    if (st.size() >= 1)
-                    {
-                        if ((st.top() == '(' && x == ')') ||
-                            (st.top() == '{' && x == '}') ||
-                            (st.top() == '[' && x == ']'))
-                        {
-                            st.pop();
-                        }
-                        else
-                        {
-                            return false;
-                        }
-                    }
-                    else
-                    {
-                        return false;
-                    }
+            else if(x[i]=='}'){
+                if(st.top()=='{'){
+                    st.pop();
+                }
+                else{
+                    return false;
                 }
             }
-            if (st.empty())
-            {
-                return true;
+            else if(x[i]==']'){
+                if(st.top()=='['){
+                    st.pop();
+                }
+                else{
+                    return false;
+                }
             }
-            else
-            {
-                return false;
+            else if(x[i]==')'){
+                if(st.top()=='('){
+                    st.pop();
+                }
+                else{
+                    return false;
+                }
             }
         }
+        if(st.empty()){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
 };
