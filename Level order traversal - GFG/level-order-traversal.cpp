@@ -22,22 +22,11 @@ Node* newNode(int val)
 }
 
 // } Driver Code Ends
-/* A binary tree Node
 
-struct Node
-{
-    int data;
-    struct Node* left;
-    struct Node* right;
-    
-    Node(int x){
-        data = x;
-        left = right = NULL;
-    }
-};
- */
-
-
+ //Step-1: create empty queue and vector
+ //Step-2: Handle edge case
+ //Step-3: Push the first node in queue for doing further poerations
+ //Step-4: if the current node have any child or not If yes then push that node in the queue
 class Solution
 {
     public:
@@ -50,15 +39,18 @@ class Solution
       
          //Step-2: Handle edge case
         if(node == NULL)return ans;
-      
+        
+        //Step-3: Push the first node in queue for doing further poerations
         q.push(node);
         int size = q.size();
+        
         while(!q.empty()){
             Node* temp = q.front();
             q.pop();
             ans.push_back(temp->data);
             
-            //Check if the current node have any child or not
+            //Step-4: Check if the current node have any child or not
+            //If yes then push that node in the queue
             if(temp->left != NULL){
                 q.push(temp->left);
             }
