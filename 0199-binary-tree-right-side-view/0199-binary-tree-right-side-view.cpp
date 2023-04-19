@@ -11,10 +11,21 @@
  */
 class Solution {
 public:
+
+    void solve(TreeNode* root, vector<int>&v, int level){
+        if(root==NULL)return;
+        if(level == v.size()){
+            v.push_back(root->val);
+        }
+
+        solve(root->right, v, level+1);
+        solve(root->left, v, level+1);
+    }
      
     vector<int> rightSideView(TreeNode* root) {
         vector<int>v;
-        if(root==NULL)
+
+        /* if(root==NULL)   //Using Level order 
             return {};
 
         queue<TreeNode*> q;
@@ -41,7 +52,9 @@ public:
                  v.push_back(ans[i][j]);
                  break;
              }
-         }
+         } */
+
+         solve(root, v, 0);
          return v;
     }
 };
