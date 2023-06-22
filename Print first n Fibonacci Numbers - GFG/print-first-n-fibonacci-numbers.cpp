@@ -14,16 +14,15 @@ class Solution
     //Function to return list containing first n fibonacci numbers.
     vector<long long> printFibb(int n) 
     {
-        vector<long long>ans;
-        // ans[0]=1;
-        ans.push_back(1);
-        if(n==1)return ans;
-        ans.push_back(1);
-        // ans[1]=1;
+        vector<long long>v(n);
+        v[0] = 1;
+        v[1] = 1;
+        
         for(int i=2;i<n;i++){
-            ans.push_back(ans[i-1]+ans[i-2]);
+            v[i] = v[i-1]+v[i-2];
         }
-        return ans;
+        return v;
+        
     }
 };
 
