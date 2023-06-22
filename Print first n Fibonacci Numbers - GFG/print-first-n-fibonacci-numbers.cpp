@@ -14,13 +14,18 @@ class Solution
     //Function to return list containing first n fibonacci numbers.
     vector<long long> printFibb(int n) 
     {
+        long long a = 1, b = 1, c = a+b;
         vector<long long>v(n);
-        v[0] = 1;
-        v[1] = 1;
         
+        v[0]=a;
+        v[1]=b;
         for(int i=2;i<n;i++){
-            v[i] = v[i-1]+v[i-2];
+            v[i] = c;
+            a = b;
+            b = c;
+            c = a+b;
         }
+        
         return v;
         
     }
