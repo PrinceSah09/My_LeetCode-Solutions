@@ -10,8 +10,8 @@ class Solution {
         // code here
         for(int i=1;i<=n;i++){
             char ch='A';
-            for(int j=1;j<=i;j++){
-                cout<<ch;
+            for(char j='A';j<=i+'A'-1;j++){
+                cout<<j;
                 ch++;
             }
             cout<<endl;
