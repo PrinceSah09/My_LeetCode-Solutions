@@ -8,17 +8,21 @@ using namespace std;
 class Solution {
   public: 
     string armstrongNumber(int n){ 
-        int temp=n;
-        int x = 0;
-        while(n){
-            int dig = n%10;
-            x = x+(dig*dig*dig);
-            n/=10;
-        }    
+        int temp = n;
+        int dig1 = (n%10);
+        dig1 = dig1*dig1*dig1;
+        n/=10;
+        
+        int dig2  = (n%10);
+        dig2 = dig2*dig2*dig2;
+        n/=10;
+        
+        int dig3 = (n%10);
+        dig3 = dig3*dig3*dig3;
         
         
         // 153 => 0+27+125+1 => 153
-        if(temp==x) {
+        if(temp == (dig1+dig2+dig3)) {
             return "Yes";
         }
         return "No";
